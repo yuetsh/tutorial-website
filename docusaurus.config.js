@@ -70,10 +70,6 @@ const config = {
           },
         ],
       },
-      footer: {
-        style: 'dark',
-        copyright: `徐越 © ${new Date().getFullYear()}`,
-      },
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,

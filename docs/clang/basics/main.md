@@ -1,4 +1,4 @@
 ---
 sidebar_position: 3.1
-title: 程序入口
+title: C 语言程序入口
 ---
