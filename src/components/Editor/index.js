@@ -7,15 +7,13 @@ import TabItem from '@theme/TabItem'
 import Admonition from "@theme/Admonition"
 import "./styles.module.css"
 import { createSubmission } from "./api"
+import BrowserOnly from "@docusaurus/BrowserOnly"
 
 function Editor({ children, showInput = false, language }) {
   let timer = 0
 
-  language = language || location.pathname.split('/')[1]
-  if (language === "clang") language = "c"
-
   const theme = usePrismTheme()
-  
+
   const editorRef = useRef(null)
   const inputRef = useRef(null)
 
@@ -165,19 +163,25 @@ function Editor({ children, showInput = false, language }) {
   }
 
   useEffect(() => {
+    language = language || location.pathname.split('/')[1]
+    if (language === "clang") language = "c"
     return () => clearTimeout(timer)
   }, [disabled])
 
   return (
-    <>
-      {getTabs()}
-      {getOutput()}
-      {getTipForNullInput()}
-      <div className="margin-vert--md">
-        <button className="button button--primary margin-right--md" onClick={run} disabled={disabled}>运行</button>
-        <button className="button button--secondary" onClick={reset}>重置</button>
-      </div>
-    </>
+    <BrowserOnly fallback={<div>加载中...</div>}>
+      {
+        () => <>
+          {getTabs()}
+          {getOutput()}
+          {getTipForNullInput()}
+          <div className="margin-vert--md">
+            <button className="button button--primary margin-right--md" onClick={run} disabled={disabled}>运行</button>
+            <button className="button button--secondary" onClick={reset}>重置</button>
+          </div>
+        </>
+      }
+    </BrowserOnly>
   )
 }
 
