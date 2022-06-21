@@ -2,6 +2,19 @@ import { submissionBase64 } from './templates'
 
 const BASE_URL = "https://judge0api.hyyz.izhai.net"
 
+const cTemplate = `#include<stdio.h>
+
+int main()
+{
+    int i;
+    scanf("%d", &i);
+    printf("Hello World! %d", i);
+    return 0;
+}`
+
+const pyTemplate = `print("Hello World!")`
+
+
 function encode(str) {
     return btoa(unescape(encodeURIComponent(str || "")))
 }
@@ -39,7 +52,7 @@ export async function createSubmission(code, stdin, id) {
             const data = await response.json()
             const memory = (data.memory === null ? "-" : parseInt(data.memory / 1024) + "MB")
             const time = (data.time === null ? "-" : data.time * 1000 + "ms")
-            console.log("Token 是", data.token)
+            // console.log("Token 是", data.token)
             return {
                 status: { id: data.status.id, msg: `${data.status.description}, ${time}, ${memory}` },
                 output: [decode(data.compile_output), decode(data.stdout)].join("\n").trim(),

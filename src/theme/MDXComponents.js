@@ -1,7 +1,7 @@
 import MDXComponents from '@theme-original/MDXComponents';
-import CodePen from '@site/src/components/CodePen';
+import Editor from '@site/src/components/Editor';
 
 export default {
   ...MDXComponents,
-  CodePen,
+  Editor,
 };
