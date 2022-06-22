@@ -1,0 +1,28 @@
+on:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - README.md
+      - LICENSE
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: BUILD
+        uses: actions/setup-node@v3
+        with:
+          node-version: 'current'
+      - run: npm install
+      - run: npm run build
+
+      - name: RSYNC
+        uses: up9cloud/action-rsync@master
+        env:
+          HOST: ${{ secrets.HOST }}
+          KEY: ${{ secrets.KEY }}
+          SOURCE: ./build
+          TARGET: ~/Tutorial/build
