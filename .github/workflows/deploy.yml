@@ -32,8 +32,7 @@ jobs:
           username: root
           key: ${{ secrets.KEY }}
           script: |
-            cd /root/Tutorial
-            docker compose down
+            docker compose -f /root/Tutorial/docker-compose.yml down
 
       - uses: actions/download-artifact@v3
         with:
@@ -49,7 +48,7 @@ jobs:
           ARGS: "-avzr --delete"
           SOURCE: build
           REMOTE_USER: root
-          TARGET: /root/Tutorial/build
+          TARGET: /root/Tutorial/build/
 
       - uses: appleboy/ssh-action@v0.1.4
         with:
@@ -57,5 +56,4 @@ jobs:
           username: root
           key: ${{ secrets.KEY }}
           script: |
-            cd /root/Tutorial
-            docker compose up -d
+            docker compose -f /root/Tutorial/docker-compose.yml up -d
