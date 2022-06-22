@@ -31,13 +31,14 @@ jobs:
           name: dist
           path: build
       
-      - run: "ls -al"
+      - run: "ls -al build"
 
-      # - uses: burnett01/rsync-deployments@5.2
-      #   with:
-      #     switches: -avzr --delete
-      #     path: build
-      #     remote_user: root
-      #     remote_path: /root/Tutorial/build
-      #     remote_host: ${{ secrets.HOST }}
-      #     remote_key: ${{ secrets.KEY }}
+      - uses: AEnterprise/rsync-deploy@v1.0
+        env:
+          DEPLOY_KEY: ${{ secrets.KEY }}
+          ARGS: "-avzr --delete"
+          SERVER_PORT: 22
+          FOLDER: build
+          SERVER_IP: ${{ secrets.HOST }}
+          USERNAME: root
+          SERVER_DESTINATION: /root/Tutorial/build
