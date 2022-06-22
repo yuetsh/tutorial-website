@@ -48,7 +48,7 @@ jobs:
           ARGS: "-avzr --delete"
           SOURCE: build
           REMOTE_USER: root
-          TARGET: /root/Tutorial/build/
+          TARGET: /root/Tutorial/
 
       - uses: appleboy/ssh-action@v0.1.4
         with:
