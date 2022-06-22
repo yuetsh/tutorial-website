@@ -34,6 +34,7 @@ jobs:
           script: |
             cd /root/Tutorial
             docker compose down
+
       - uses: actions/download-artifact@v3
         with:
           name: dist
