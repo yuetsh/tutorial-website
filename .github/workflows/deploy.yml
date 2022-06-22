@@ -16,11 +16,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 'current'
-      - run: npm install
       - run: npm run build
 
       - name: RSYNC
-        uses: up9cloud/action-rsync@master
+        uses: up9cloud/action-rsync@v1.3
         env:
           HOST: ${{ secrets.HOST }}
           KEY: ${{ secrets.KEY }}
