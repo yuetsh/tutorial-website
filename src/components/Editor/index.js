@@ -6,7 +6,7 @@ import { useEditable } from "use-editable"
 import Tabs from '@theme/Tabs'
 import TabItem from '@theme/TabItem'
 import Admonition from "@theme/Admonition"
-import "./styles.module.css"
+import styles from "./styles.module.css"
 import { createSubmission } from "./api"
 
 function Editor({ children, showInput = false, language }) {
@@ -111,10 +111,12 @@ function Editor({ children, showInput = false, language }) {
   }
 
   function getTabs() {
+    let label = "Python"
+    if (language === "c") label = "C 语言"
     if (showInput) {
       return (
         <Tabs>
-          <TabItem value="代码（可编辑）" default>
+          <TabItem value={label} default>
             {getCodeEditor()}
           </TabItem>
           <TabItem value="输入">
@@ -125,7 +127,7 @@ function Editor({ children, showInput = false, language }) {
     } else {
       return (
         <Tabs>
-          <TabItem value="代码（可编辑）" default>
+          <TabItem value={label} default>
             {getCodeEditor()}
           </TabItem>
         </Tabs>
@@ -133,19 +135,28 @@ function Editor({ children, showInput = false, language }) {
     }
   }
 
-  function getOutput() {
+  function Actions() {
+    return (
+      <div className="margin-vert--md">
+        <button className="button button--primary margin-right--md" onClick={run} disabled={disabled}>运行</button>
+        <button className="button button--secondary" onClick={reset}>重置</button>
+      </div>
+    )
+  }
+
+  function Output() {
     if (statusID !== 0 && output !== "") {
       if (statusID === 3) {
         return <Admonition type="tip" title="运行结果">
-          {output}
+          <pre className={styles.outputBox} dangerouslySetInnerHTML={{ __html: output }}></pre>
         </Admonition>
       } else if (statusID === 6) {
         return <Admonition type="danger" title="编译失败">
-          {output}
+          <pre className={styles.outputBox} dangerouslySetInnerHTML={{ __html: output }}></pre>
         </Admonition>
       } else {
         return <Admonition type="danger" title="运行失败">
-          {output}
+          <pre className={styles.outputBox} dangerouslySetInnerHTML={{ __html: output }}></pre>
         </Admonition>
       }
     } else {
@@ -153,7 +164,7 @@ function Editor({ children, showInput = false, language }) {
     }
   }
 
-  function getTipForNullInput() {
+  function TipForNullInput() {
     if (showInputNullTip) {
       return (
         <Admonition type="caution" title="提示">
@@ -166,19 +177,15 @@ function Editor({ children, showInput = false, language }) {
   }
 
   useEffect(() => {
-
     return () => clearTimeout(timer)
   }, [disabled])
 
   return (
     <>
       {getTabs()}
-      {getOutput()}
-      {getTipForNullInput()}
-      <div className="margin-vert--md">
-        <button className="button button--primary margin-right--md" onClick={run} disabled={disabled}>运行</button>
-        <button className="button button--secondary" onClick={reset}>重置</button>
-      </div>
+      <Actions />
+      <Output />
+      <TipForNullInput />
     </>
   )
 }
