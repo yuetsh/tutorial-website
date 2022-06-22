@@ -3,7 +3,7 @@ name: Deploy
 on:
   push:
     branches:
-    - master
+      - master
 
 jobs:
   build:
@@ -30,12 +30,14 @@ jobs:
         with:
           name: dist
           path: build
+      
+      - run: "ls -al"
 
-      - uses: burnett01/rsync-deployments@5.2
-        with:
-          switches: -avzr --delete
-          path: ./build
-          remote_path: /root/Tutorial/build
-          remote_host: ${{ secrets.HOST }}
-          remote_user: root
-          remote_key: ${{ secrets.KEY }}
+      # - uses: burnett01/rsync-deployments@5.2
+      #   with:
+      #     switches: -avzr --delete
+      #     path: build
+      #     remote_user: root
+      #     remote_path: /root/Tutorial/build
+      #     remote_host: ${{ secrets.HOST }}
+      #     remote_key: ${{ secrets.KEY }}
