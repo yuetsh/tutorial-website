@@ -15,7 +15,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 'current'
-          cache: 'npm'
       - run: npm install
       - run: npm run build
 
@@ -23,11 +22,6 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/download-artifact@v3
-        with:
-          name: build
-          path: build
-      
       - name: RSYNC
         uses: burnett01/rsync-deployments@5.2
         with:
