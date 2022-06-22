@@ -24,6 +24,6 @@ jobs:
           switches: -avzr --delete
           path: ./build
           remote_path: /root/Tutorial/build
-          remote_host: {{ $secrets.HOST }}
+          remote_host: {{ secrets.HOST }}
           remote_user: root
-          remote_key: ${{ $secrets.KEY }}
+          remote_key: ${{ secrets.KEY }}
