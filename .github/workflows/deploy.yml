@@ -1,6 +1,9 @@
 name: Deploy
 
-on: push
+on:
+  push:
+    branches:
+    - master
 
 jobs:
   deploy:
@@ -16,9 +19,11 @@ jobs:
       - run: npm run build
 
       - name: RSYNC
-        uses: up9cloud/action-rsync@v1.3
+        uses: burnett01/rsync-deployments@5.2
         env:
-          HOST: ${{ secrets.HOST }}
-          KEY: ${{ secrets.KEY }}
-          SOURCE: ./build
-          TARGET: ~/Tutorial/build
+          switches: -avzr --delete
+          path: ./build
+          remote_path: /root/Tutorial/build
+          remote_host: {{ $secrets.HOST }}
+          remote_user: root
+          remote_key: ${{ $secrets.KEY }}
