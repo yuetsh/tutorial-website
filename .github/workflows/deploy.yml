@@ -20,7 +20,7 @@ jobs:
 
       - name: RSYNC
         uses: burnett01/rsync-deployments@5.2
-        env:
+        with:
           switches: -avzr --delete
           path: ./build
           remote_path: /root/Tutorial/build
