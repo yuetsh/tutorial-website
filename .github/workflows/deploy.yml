@@ -21,15 +21,40 @@ jobs:
         with:
           name: dist
           path: build
-
+  
   deploy:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - uses: appleboy/ssh-action@v0.1.4
+        with:
+          host: ${{ secrets.HOST }}
+          username: root
+          key: ${{ secrets.KEY }}
+          script: |
+            cd /root/Tutorial
+            docker compose down
       - uses: actions/download-artifact@v3
         with:
           name: dist
           path: build
       
       - run: "ls -al build"
-      - run: "rsync"
+
+      - uses: easingthemes/ssh-deploy@v2.2.11
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.KEY }}
+          REMOTE_HOST: ${{ secrets.HOST }}
+          ARGS: "-avzr --delete"
+          SOURCE: build
+          REMOTE_USER: root
+          TARGET: /root/Tutorial/build
+
+      - uses: appleboy/ssh-action@v0.1.4
+        with:
+          host: ${{ secrets.HOST }}
+          username: root
+          key: ${{ secrets.KEY }}
+          script: |
+            cd /root/Tutorial
+            docker compose up -d
