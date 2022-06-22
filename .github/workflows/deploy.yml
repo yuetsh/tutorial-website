@@ -6,41 +6,24 @@ on:
       - master
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      
       - uses: actions/setup-node@v3
         with:
           node-version: 'current'
-      - run: npm install
-      - run: npm run build
+          cache: 'npm'
+        - run: npm install
+        - run: npm run build
 
-      - uses: actions/upload-artifact@v3
-        with:
-          name: dist
-          path: build
-  
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
       - uses: appleboy/ssh-action@v0.1.4
         with:
-          host: ${{ secrets.HOST }}
           username: root
+          host: ${{ secrets.HOST }}
           key: ${{ secrets.KEY }}
-          script: |
-            docker compose -f /root/Tutorial/docker-compose.yml down
-
-      - uses: actions/download-artifact@v3
-        with:
-          name: dist
-          path: build
+          script: docker compose -f /root/Tutorial/docker-compose.yml down
       
-      - run: "ls -al build"
-
       - uses: easingthemes/ssh-deploy@v2.2.11
         env:
           SSH_PRIVATE_KEY: ${{ secrets.KEY }}
@@ -52,8 +35,7 @@ jobs:
 
       - uses: appleboy/ssh-action@v0.1.4
         with:
-          host: ${{ secrets.HOST }}
           username: root
+          host: ${{ secrets.HOST }}
           key: ${{ secrets.KEY }}
-          script: |
-            docker compose -f /root/Tutorial/docker-compose.yml up -d
+          script: docker compose -f /root/Tutorial/docker-compose.yml up -d
