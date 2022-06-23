@@ -50,7 +50,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: '徐越的编程教程',
+        title: '徐越的编程书',
         logo: {
           alt: '',
           src: 'img/logo.svg',
