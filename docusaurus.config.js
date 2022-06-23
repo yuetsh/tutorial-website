@@ -8,7 +8,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: '徐越的编程书',
   tagline: '轻轻松松上手编程语言',
-  url: 'https://your-docusaurus-test-site.com',
+  url: 'https://book.hyyz.izhai.net',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
