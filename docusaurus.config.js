@@ -38,7 +38,11 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
         },
-        blog: false,
+        // blog: false,
+        blog: {
+          showReadingTime: true,
+          blogSidebarTitle: "近期文章"
+        },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
@@ -66,8 +70,19 @@ const config = {
             type: 'doc',
             docId: 'python/intro',
             position: 'left',
-            label: 'Python 语言',
+            label: 'Python',
           },
+          {
+            type: 'doc',
+            docId: 'linux/intro',
+            position: 'left',
+            label: 'Linux',
+          },
+          {
+            to: 'blog',
+            label: '文章',
+            position: 'left',
+          }
         ],
       },
       prism: {

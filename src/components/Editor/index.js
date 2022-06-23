@@ -96,7 +96,7 @@ function Editor({ children, showInput = false, language }) {
   function getCodeEditor() {
     return <Highlight {...defaultProps} code={code} language={language} theme={theme}>
       {({ tokens, getTokenProps }) => (
-        <pre spellCheck={false} ref={editorRef}>
+        <pre className={styles.codeEditor} spellCheck={false} ref={editorRef}>
           <code>
             {tokens.map((line, i) => (
               <React.Fragment key={i}>
