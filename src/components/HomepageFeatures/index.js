@@ -1,43 +1,27 @@
-import React from "react";
-import clsx from "clsx";
-import styles from "./styles.module.css";
+import React from "react"
+import styles from "./styles.module.css"
 
 const FeatureList = [
   {
-    title: "Easy to Use",
+    title: "交互式编程学习",
     Svg: require("@site/static/img/undraw_docusaurus_mountain.svg").default,
-    description: (
-      <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
-      </>
-    ),
+    description: "可以自己动手修改代码，无须环境准备，方便快捷",
   },
   {
-    title: "Focus on What Matters",
+    title: "系统且专业",
     Svg: require("@site/static/img/undraw_docusaurus_tree.svg").default,
-    description: (
-      <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
-      </>
-    ),
+    description: "提供专业的编程学习",
   },
   {
-    title: "Powered by React",
+    title: "及时更新",
     Svg: require("@site/static/img/undraw_docusaurus_react.svg").default,
-    description: (
-      <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
-      </>
-    ),
+    description: "随时编写，随时更新",
   },
-];
+]
 
 function Feature({ Svg, title, description }) {
   return (
-    <div className={clsx("col col--4")}>
+    <div className="col col--4">
       <div className="text--center">
         <Svg className={styles.featureSvg} role="img" />
       </div>
@@ -46,7 +30,7 @@ function Feature({ Svg, title, description }) {
         <p>{description}</p>
       </div>
     </div>
-  );
+  )
 }
 
 export default function HomepageFeatures() {
@@ -60,5 +44,5 @@ export default function HomepageFeatures() {
         </div>
       </div>
     </section>
-  );
+  )
 }

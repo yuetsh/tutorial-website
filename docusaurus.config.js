@@ -6,7 +6,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: '徐越的编程教程',
+  title: '徐越的编程书',
   tagline: '轻轻松松上手编程语言',
   url: 'https://your-docusaurus-test-site.com',
   baseUrl: '/',
