@@ -38,11 +38,11 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
         },
-        // blog: false,
-        blog: {
-          showReadingTime: true,
-          blogSidebarTitle: "近期文章"
-        },
+        blog: false,
+        // blog: {
+        //   showReadingTime: true,
+        //   blogSidebarTitle: "近期文章"
+        // },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
@@ -78,11 +78,11 @@ const config = {
             position: 'left',
             label: 'Linux',
           },
-          {
-            to: 'blog',
-            label: '文章',
-            position: 'left',
-          }
+          // {
+          //   to: 'blog',
+          //   label: '文章',
+          //   position: 'left',
+          // }
         ],
       },
       prism: {
