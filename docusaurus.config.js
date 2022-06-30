@@ -62,6 +62,12 @@ const config = {
         items: [
           {
             type: 'doc',
+            docId: 'basic/intro',
+            position: 'left',
+            label: '编程基础',
+          },
+          {
+            type: 'doc',
             docId: 'clang/intro',
             position: 'left',
             label: 'C 语言',
