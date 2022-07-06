@@ -16,11 +16,14 @@ function decode(bytes) {
 export async function createSubmission(code, stdin, id) {
     const encodedCode = encode(code)
     id = parseInt(id)
+    let compilerOptions = ''
+    if (id === 50) compilerOptions = '-lm' // 解决 GCC 的链接问题
     const payload = {
         source_code: encodedCode,
         language_id: id,
         stdin: encode(stdin),
-        redirect_stderr_to_stdout: true
+        redirect_stderr_to_stdout: true,
+        compiler_options: compilerOptions,
     }
     try {
         const response = await fetch(`${BASE_URL}/submissions?base64_encoded=true&wait=true`, {
