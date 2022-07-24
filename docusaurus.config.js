@@ -36,8 +36,7 @@ const config = {
           routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
           breadcrumbs: false,
-          showLastUpdateTime: true,
-          showLastUpdateAuthor: true
+          showLastUpdateTime: true
         },
         blog: false,
         // blog: {
