@@ -53,36 +53,49 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      announcementBar: {
+        content: '本网站正在建设中...',
+        backgroundColor: '#fafbfc',
+        textColor: '#091E42',
+      },
       navbar: {
         title: '徐越的编程书',
+        hideOnScroll: true,
         logo: {
-          alt: '',
+          alt: '徐越的编程书',
           src: 'img/logo.svg',
         },
         items: [
           {
             type: 'doc',
             docId: 'basic/intro',
-            position: 'left',
             label: '编程基础',
           },
           {
-            type: 'doc',
-            docId: 'clang/intro',
-            position: 'left',
-            label: 'C 语言',
-          },
-          {
-            type: 'doc',
-            docId: 'python/intro',
-            position: 'left',
-            label: 'Python',
+            type: 'dropdown',
+            label: '编程语言',
+            items: [
+              {
+                type: 'doc',
+                docId: 'clang/intro',
+                label: 'C',
+              },
+              {
+                type: 'doc',
+                docId: 'python/intro',
+                label: 'Python',
+              },
+            ]
           },
           {
             type: 'doc',
             docId: 'linux/intro',
-            position: 'left',
             label: 'Linux',
+          },
+          {
+            type: 'doc',
+            docId: 'cs/intro',
+            label: '计算机科学'
           },
           // {
           //   to: 'blog',
