@@ -94,7 +94,7 @@ const config = {
           },
           {
             type: 'doc',
-            docId: 'cs/intro',
+            docId: 'cs/intro/index',
             label: '计算机科学'
           },
           // {
