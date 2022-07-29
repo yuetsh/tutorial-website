@@ -88,13 +88,13 @@ const config = {
           },
           {
             type: 'doc',
-            docId: 'linux/intro',
-            label: 'Linux',
+            docId: 'cs/intro/index',
+            label: '计算机科学'
           },
           {
             type: 'doc',
-            docId: 'cs/intro/index',
-            label: '计算机科学'
+            docId: 'linux/intro',
+            label: 'Linux',
           },
           // {
           //   to: 'blog',
