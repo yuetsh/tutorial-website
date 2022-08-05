@@ -1,0 +1,8 @@
+position: 5
+label: 基本语法
+collapsed: false
+# collapsible: false
+link:
+  type: generated-index
+  description: 入门 C 语言的基本语法
+  
