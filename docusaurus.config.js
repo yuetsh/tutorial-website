@@ -43,7 +43,10 @@ const config = {
         //   blogSidebarTitle: "近期文章"
         // },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: [
+            require.resolve('./src/css/custom.css'),
+            require.resolve('./src/css/fix.css'),
+          ]
         },
       }),
     ],
