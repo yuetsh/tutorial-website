@@ -1,9 +1,9 @@
 .codeEditor {
-    box-shadow: var(--ifm-global-shadow-lw);
+  box-shadow: var(--ifm-global-shadow-lw);
 }
 
 .outputBox {
-    box-shadow: none;
-    padding: 0;
-    background-color: transparent;
+  box-shadow: none;
+  padding: 0;
+  background-color: transparent;
 }

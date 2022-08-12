@@ -5,6 +5,7 @@
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
     "build": "docusaurus build",
+    "fmt": "prettier --write src/ docs/",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
@@ -23,7 +24,8 @@
     "use-editable": "^2.3.3"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "2.0.1"
+    "@docusaurus/module-type-aliases": "2.0.1",
+    "prettier": "^2.7.1"
   },
   "browserslist": {
     "production": [

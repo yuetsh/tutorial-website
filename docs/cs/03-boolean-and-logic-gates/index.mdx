@@ -3,6 +3,7 @@ title: 03 布尔逻辑和逻辑门
 ---
 
 ![](./目录.png)
+
 <BVideo src="BV1EW411u7th" p="3" />
 
 ## 二进制
@@ -29,30 +30,29 @@ title: 03 布尔逻辑和逻辑门
 
 在常规代数中，变量的值是数字，可以进行加法或乘法之类的操作。但在布尔代数中，变量的值是 **True** 和 **False** 能进行逻辑操作。
 
-
 ## NOT、AND、OR
 
 ### NOT GATES（非门）
 
-NOT操作把布尔值反转，把 True 进行 NOT 后就会变成 False，反之亦然。
+NOT 操作把布尔值反转，把 True 进行 NOT 后就会变成 False，反之亦然。
 
-  | INPUT（输入） | OUTPUT （输出） |
-  | :-----------: | :-------------: |
-  |     TRUE      |      FALSE      |
-  |     FALSE     |      TRUE       |
+| INPUT（输入） | OUTPUT （输出） |
+| :-----------: | :-------------: |
+|     TRUE      |      FALSE      |
+|     FALSE     |      TRUE       |
 
 > 用晶体管可以轻松实现这个逻辑。晶体管只是电控制的开关，有三根线：两根电极和一根控制线，控制线通电时，电流就可以从一个电极流到另一个电极。![](./NOT.png)
 
 ### AND GATES（与门）
 
-AND操作有两个输入和一个输出。如果两个输入都是 True，输出才是 True；两个输入有一个为 True，输出为 False；两个输入都是 False，输出还是 False。
+AND 操作有两个输入和一个输出。如果两个输入都是 True，输出才是 True；两个输入有一个为 True，输出为 False；两个输入都是 False，输出还是 False。
 
-  | INPUT A（输入A） | INPUT B（输入B） | OUTPUT（输出） |
-  | :--------------: | :--------------: | :------------: |
-  |       TRUE       |       TRUE       |      TRUE      |
-  |      FALSE       |       TRUE       |     FALSE      |
-  |       TRUE       |      FALSE       |     FALSE      |
-  |      FALSE       |      FALSE       |     FALSE      |
+| INPUT A（输入 A） | INPUT B（输入 B） | OUTPUT（输出） |
+| :---------------: | :---------------: | :------------: |
+|       TRUE        |       TRUE        |      TRUE      |
+|       FALSE       |       TRUE        |     FALSE      |
+|       TRUE        |       FALSE       |     FALSE      |
+|       FALSE       |       FALSE       |     FALSE      |
 
 > 要实现 AND 操作，需要两个晶体管连在一起，得到两个输入一个输出。只有当两个开关都是开时，电流才会通；其中任何一个没有通，电流则不通。![](./AND.png)
 
@@ -60,29 +60,29 @@ AND操作有两个输入和一个输出。如果两个输入都是 True，输出
 
 OR 操作也有两个输入和一个输出。但是它只需要满足一方为 True，结果就为 True；只有双方都为 False 时，结果才是 False。
 
-  | INPUT A（输入A） | INPUT B（输入B） | OUTPUT（输出） |
-  | ---------------- | ---------------- | -------------- |
-  | TRUE             | TRUE             | TRUE           |
-  | FALSE            | TRUE             | TRUE           |
-  | TRUE             | FALSE            | TRUE           |
-  | FALSE            | FALSE            | FALSE          |
+| INPUT A（输入 A） | INPUT B（输入 B） | OUTPUT（输出） |
+| ----------------- | ----------------- | -------------- |
+| TRUE              | TRUE              | TRUE           |
+| FALSE             | TRUE              | TRUE           |
+| TRUE              | FALSE             | TRUE           |
+| FALSE             | FALSE             | FALSE          |
 
 > 要实现 OR 操作，需要两个晶体管并联起来。任意一处的开关为开时，电流都能通过。
 > ![](./OR.png)
 
 ### NOT、AND、OR 的电路符号
 
-  ![](./符号.png)
+![](./符号.png)
 
 ## XOR 异或
 
 除了与或非三门之外，还有一个布尔操作叫做 **异或（XOR）**。XOR 就像普通 OR，但有个区别：如果两个输入都为 True，但结果为 False。想要输出 True，其中一个输入必须是 True，另一个输入为 False，这样结果才会是 True；俩输入均为 False 时，结果与 OR 一样。
 
-| INPUT A（输入A） | INPUT B（输入B） | OUTPUT（输出） |
-| :--------------: | :--------------: | :------------: |
-|       TRUE       |       TRUE       |     FALSE      |
-|      FALSE       |       TRUE       |      TRUE      |
-|       TRUE       |      FALSE       |      TRUE      |
-|      FALSE       |      FALSE       |     FALSE      |
+| INPUT A（输入 A） | INPUT B（输入 B） | OUTPUT（输出） |
+| :---------------: | :---------------: | :------------: |
+|       TRUE        |       TRUE        |     FALSE      |
+|       FALSE       |       TRUE        |      TRUE      |
+|       TRUE        |       FALSE       |      TRUE      |
+|       FALSE       |       FALSE       |     FALSE      |
 
 > 实现 XOR 的电路图。![](./XOR.png)
