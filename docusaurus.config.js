@@ -70,6 +70,11 @@ const config = {
           },
           {
             tagName: 'link',
+            rel: 'apple-touch-icon',
+            href: '/img/docusaurus.png',
+          },
+          {
+            tagName: 'link',
             rel: 'manifest',
             href: '/manifest.json',
           },
