@@ -1,41 +1,41 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const lightCodeTheme = require("prism-react-renderer/themes/github")
+const darkCodeTheme = require("prism-react-renderer/themes/dracula")
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: '徐越的编程书',
-  tagline: '轻轻松松上手编程语言',
-  url: 'https://book.hyyz.izhai.net',
-  baseUrl: '/',
-  onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.ico',
+  title: "徐越的编程书",
+  tagline: "轻轻松松上手编程语言",
+  url: "https://book.hyyz.izhai.net",
+  baseUrl: "/",
+  onBrokenLinks: "throw",
+  onBrokenMarkdownLinks: "warn",
+  favicon: "img/favicon.ico",
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: "facebook", // Usually your GitHub org/user name.
+  projectName: "docusaurus", // Usually your repo name.
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
   // to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: 'zh-Hans',
-    locales: ['zh-Hans'],
+    defaultLocale: "zh-Hans",
+    locales: ["zh-Hans"],
   },
 
   presets: [
     [
-      'classic',
+      "classic",
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          routeBasePath: '/',
-          sidebarPath: require.resolve('./sidebars.js'),
-          breadcrumbs: false
+          routeBasePath: "/",
+          sidebarPath: require.resolve("./sidebars.js"),
+          breadcrumbs: true,
         },
         blog: false,
         // blog: {
@@ -44,9 +44,9 @@ const config = {
         // },
         theme: {
           customCss: [
-            require.resolve('./src/css/custom.css'),
-            require.resolve('./src/css/fix.css'),
-          ]
+            require.resolve("./src/css/custom.css"),
+            require.resolve("./src/css/fix.css"),
+          ],
         },
       }),
     ],
@@ -54,92 +54,107 @@ const config = {
 
   plugins: [
     [
-      '@docusaurus/plugin-pwa',
+      "@docusaurus/plugin-pwa",
       {
         debug: true,
         offlineModeActivationStrategies: [
-          'appInstalled',
-          'standalone',
-          'queryString',
+          "appInstalled",
+          "standalone",
+          "queryString",
         ],
         pwaHead: [
           {
-            tagName: 'link',
-            rel: 'icon',
-            href: '/img/docusaurus.png',
+            tagName: "link",
+            rel: "icon",
+            href: "/img/docusaurus.png",
           },
           {
-            tagName: 'link',
-            rel: 'apple-touch-icon',
-            href: '/img/docusaurus.png',
+            tagName: "link",
+            rel: "apple-touch-icon",
+            href: "/img/docusaurus.png",
           },
           {
-            tagName: 'link',
-            rel: 'manifest',
-            href: '/manifest.json',
+            tagName: "link",
+            rel: "manifest",
+            href: "/manifest.json",
           },
           {
-            tagName: 'meta',
-            name: 'theme-color',
-            content: 'rgb(37, 194, 160)',
+            tagName: "meta",
+            name: "theme-color",
+            content: "rgb(37, 194, 160)",
           },
         ],
-      }
-    ]
+      },
+    ],
   ],
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       announcementBar: {
-        content: '本网站正在建设中...',
-        backgroundColor: '#fafbfc',
-        textColor: '#091E42',
+        content: "本网站正在建设中...",
+        backgroundColor: "#fafbfc",
+        textColor: "#091E42",
       },
       navbar: {
-        title: '徐越的编程书',
-        hideOnScroll: true,
+        title: "徐越的编程书",
+        hideOnScroll: false,
         logo: {
-          alt: '徐越的编程书',
-          src: 'img/logo.svg',
+          alt: "徐越的编程书",
+          src: "img/logo.svg",
         },
         items: [
           {
-            type: 'doc',
-            docId: 'basic/intro',
-            label: '编程基础',
+            type: "doc",
+            docId: "basic/intro",
+            label: "编程基础",
           },
           {
-            type: 'dropdown',
-            label: '编程语言',
+            type: "dropdown",
+            label: "编程语言",
             items: [
               {
-                type: 'doc',
-                docId: 'clang/intro',
-                label: 'C',
+                type: "doc",
+                docId: "clang/intro",
+                label: "C",
               },
               {
-                type: 'doc',
-                docId: 'python/intro',
-                label: 'Python',
+                type: "doc",
+                docId: "python/intro",
+                label: "Python",
               },
-            ]
+            ],
           },
           {
-            type: 'doc',
-            docId: 'cs/intro/index',
-            label: '计算机科学'
+            type: "doc",
+            docId: "cs/intro/index",
+            label: "计算机科学",
           },
           {
-            type: 'doc',
-            docId: 'linux/intro',
-            label: 'Linux',
+            type: "doc",
+            docId: "linux/intro",
+            label: "Linux",
           },
           // {
           //   to: 'blog',
           //   label: '文章',
           //   position: 'left',
           // }
+          {
+            label: "导航",
+            position: "right",
+            href: "https://home.hyyz.izhai.net",
+          },
+          {
+            label: "判题狗",
+            position: "right",
+            href: "https://oj.hyyz.izhai.net",
+          },
+          {
+            label: "自测猫",
+            position: "right",
+            href: "https://code.hyyz.izhai.net",
+          },
         ],
       },
       prism: {
@@ -147,6 +162,6 @@ const config = {
         darkTheme: darkCodeTheme,
       },
     }),
-};
+}
 
-module.exports = config;
+module.exports = config

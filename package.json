@@ -5,7 +5,7 @@
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
     "build": "docusaurus build",
-    "fmt": "prettier --write src/ docs/",
+    "fmt": "prettier --write src/ docs/ *.js",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
