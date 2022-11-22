@@ -1,6 +1,6 @@
 ---
 sidebar_position: 4
-title: 环境安装
+title: 编程环境的安装
 ---
 
 ## 在线
@@ -13,7 +13,7 @@ title: 环境安装
 
 平时我的课程中，大家可以使用 [自测猫](https://code.hyyz.izhai.net)，选择 C 语言进行在线编写，测试自己的代码。
 
-![testingcat](./img/testingcat.png)
+![testingcat](./testingcat.png)
 
 点击最右边的 **运行** 按钮，看看输出的结果
 
@@ -35,23 +35,23 @@ C 语言需要 [编译器](https://baike.baidu.com/item/%E7%BC%96%E8%AF%91%E5%99
 
 页面往下拉，找到 GCC 最新版下面的 **x86_64-win32-seh** 链接（下图红框部分），下载软件包
 
-![mingw64-download](./img/mingw64-download.png)
+![mingw64-download](./mingw64-download.png)
 
 下载好了之后是一个后缀名为 7z 的压缩包
 
-![ming64zip](./img/mingw64-7z.png)
+![ming64zip](./mingw64-7z.png)
 
 > 如果解压不了，可以安装 [7-Zip](https://www.7-zip.org/)
 
-![7-Zip](./img/7-zip.jpeg)
+![7-Zip](./7-zip.jpeg)
 
 解压后得到一个叫 mingw64 的文件夹
 
-![mingw64](./img/mingw64.png)
+![mingw64](./mingw64.png)
 
 把 **mingw64** 文件夹放到 C 盘的 Program Files 文件夹里面去
 
-![C path](./img/path.png)
+![C path](./path.png)
 
 #### 2. 设置系统环境变量
 
@@ -61,11 +61,11 @@ mingw64 文件夹内有编译 C 文件的命令，但是我们想在任意地方
 
 打开系统设置，搜索 「编辑系统环境变量」
 
-![env-settings](./img/env-settings1.png)
+![env-settings](./env-settings1.png)
 
 在弹出框中点击「环境变量」
 
-![env-settings](./img/env-settings2.png)
+![env-settings](./env-settings2.png)
 
 在弹出框中的**系统**环境变量中，双击打开 Path 这一行
 
@@ -73,11 +73,11 @@ mingw64 文件夹内有编译 C 文件的命令，但是我们想在任意地方
 
 复制路径 mingw64 文件夹下的 bin 文件夹路径
 
-![env-settings](./img/env-settings5.png)
+![env-settings](./env-settings5.png)
 
 新建一条系统环境变量，粘贴路径（记住是 bin 文件夹）
 
-![env-settings](./img/env-settings4.png)
+![env-settings](./env-settings4.png)
 
 3. 重启计算机
 
@@ -85,7 +85,7 @@ mingw64 文件夹内有编译 C 文件的命令，但是我们想在任意地方
 
 设置好系统环境变量并重启后，打开 命令提示符 CMD，输入 `gcc --version` 命令，正常显示就算可以了。
 
-![gcc](./img/gcc.png)
+![gcc](./gcc.png)
 
 ### Visual Studio Code
 

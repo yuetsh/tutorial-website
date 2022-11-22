@@ -115,12 +115,12 @@ const config = {
             items: [
               {
                 type: "doc",
-                docId: "clang/intro",
+                docId: "clang/intro/index",
                 label: "C",
               },
               {
                 type: "doc",
-                docId: "python/intro",
+                docId: "python/intro/index",
                 label: "Python",
               },
             ],
