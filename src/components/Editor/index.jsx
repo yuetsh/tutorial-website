@@ -10,8 +10,6 @@ import styles from "./styles.module.css"
 import { createSubmission } from "./api"
 
 function Editor({ children, showInput = false, language }) {
-  let timer = 0
-
   const theme = usePrismTheme()
   const location = useLocation()
   language = language || location.pathname.split("/")[1]
@@ -59,11 +57,7 @@ function Editor({ children, showInput = false, language }) {
     const result = await createSubmission(code, input, languageID)
     setOutput(result.output)
     setStatusID(result.status.id)
-
-    timer = setTimeout(() => {
-      setDisabled(false)
-      clearTimeout(timer)
-    }, 2000)
+    setDisabled(false)
   }
 
   function reset() {
@@ -220,10 +214,6 @@ function Editor({ children, showInput = false, language }) {
       return null
     }
   }
-
-  useEffect(() => {
-    return () => clearTimeout(timer)
-  }, [disabled])
 
   return (
     <>

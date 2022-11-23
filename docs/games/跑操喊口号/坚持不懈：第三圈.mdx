@@ -1,0 +1,66 @@
+---
+sidebar_position: 3
+---
+
+:::success 四句跑操口号
+
+一班一班，实力非凡，众志成城，勇往直前
+
+:::
+
+## 开始挑战
+
+坚持就是胜利，决赛圈开始了！在最后一圈，刘老师这样设计：
+
+前三排一起喊：一班一班，实力非凡
+
+后三排一起喊：众志成城，勇往直前
+
+最后全班一起喊：一班最牛，最牛一班
+
+已经到最后一关了，徐老师也来加亿点难度，这一关我不会给出思路，你们要靠自己，但是锦囊妙计还是有的。
+
+## 实现的效果
+
+![](./img/第三圈效果.gif)
+
+## 完成挑战
+
+<Editor language="c" showInput>{`#include<stdio.h>\n
+int main()
+{
+    int n;
+    scanf("%d", &n);
+    if (n  4) {
+        printf("一班一班\\n");
+        printf("实力非凡\\n");
+    }
+    if (n  1) {
+        printf("众志成城\\n");
+        printf("勇往直前\\n");
+    }
+    if (n  4) {
+        printf("一班最牛\\n");
+    }
+    if (n  1) {
+        printf("最牛一班\\n");
+    }
+    return 0;
+}`}</Editor>
+
+## 附件：第三个锦囊
+
+import jinnang from "./img/锦囊妙计.png"
+
+<div class="container">
+  <div class="row">
+    <img src={jinnang} width="35" />
+    <a
+      class="button button--primary margin-left--sm"
+      href="/clang/relational-operator/剩下三个"
+      target="_blank"
+    >
+      点我打开
+    </a>
+  </div>
+</div>

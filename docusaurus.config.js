@@ -110,7 +110,11 @@ const config = {
             label: "编程基础",
           },
           {
-            type: "dropdown",
+            type: "doc",
+            docId: "games/跑操喊口号/index",
+            label: '游戏闯关'
+          },
+          {
             label: "编程语言",
             items: [
               {
@@ -130,11 +134,11 @@ const config = {
             docId: "cs/intro/index",
             label: "计算机科学",
           },
-          {
-            type: "doc",
-            docId: "linux/intro",
-            label: "Linux",
-          },
+          // {
+          //   type: "doc",
+          //   docId: "linux/intro",
+          //   label: "Linux",
+          // },
           // {
           //   to: 'blog',
           //   label: '文章',

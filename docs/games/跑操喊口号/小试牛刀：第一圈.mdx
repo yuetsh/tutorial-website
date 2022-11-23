@@ -1,0 +1,74 @@
+---
+sidebar_position: 1
+---
+
+:::success 四句跑操口号
+
+一班一班，实力非凡，众志成城，勇往直前
+
+:::
+
+## 挑战开始
+
+开始跑操了，同学们一共分为四排，在跑第一圈的时候，刘老师是这样设计喊口号的：
+
+首先**前两排**的学生一起喊：一班一班，实力非凡；
+
+接着**后两排**的学生一起喊：众志成城，勇往直前。
+
+## 编程思路
+
+输入你所在的排数 n，n 的取值范围的 1 到 4。
+
+前两排就是 **n 小于 3**，后两排就是 **n 大于 2**
+
+## 实现的效果
+
+![](./img/第一圈效果.gif)
+
+不会写？可以打开后面的第一个锦囊。
+
+## 完成挑战
+
+下面是一个代码区域，根据注释的提示，完成相应的填空。
+
+当你填完之后，点击「输入」，在输入框中输入你所在的排数，点击「运行」测试一下代码。
+
+<Editor language="c" showInput>{`#include<stdio.h>\n
+int main()
+{
+    int n;
+    scanf("%d", &n);
+    // 前两排的学生，在括号中，n 和 3 之间填写答案
+    if (n  3) {
+        printf("一班一班\\n");
+        printf("实力非凡");
+    }
+    // 后两排的学生，在括号中，n 和 2 之间填写答案
+    if (n  2) {
+        printf("众志成城\\n");
+        printf("勇往直前");
+    }
+    return 0;
+}`}</Editor>
+
+## 附件：第一个锦囊
+
+import jinnang from "./img/锦囊妙计.png"
+
+<div class="container">
+  <div class="row">
+    <img src={jinnang} width="35" />
+    <a
+      class="button button--primary margin-left--sm"
+      href="/clang/relational-operator/大于和小于"
+      target="_blank"
+    >
+      点我打开
+    </a>
+  </div>
+</div>
+
+## 接下来
+
+看下是否和效果一致！如果效果一样，说明你已经完成了第一个挑战，接下来难度升级，接受第二个挑战吧。
