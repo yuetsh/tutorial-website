@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback, useEffect } from "react"
+import React, { useState, useRef, useCallback } from "react"
 import Highlight, { defaultProps } from "prism-react-renderer"
 import { usePrismTheme } from "@docusaurus/theme-common"
 import { useLocation } from "@docusaurus/router"
@@ -69,86 +69,78 @@ function Editor({ children, showInput = false, language }) {
   }
 
   function getInput() {
+    if (!showInput) return null
     return (
-      <Highlight
-        {...defaultProps}
-        code={input}
-        language="plaintext"
-        theme={theme}
-      >
-        {({ tokens, getTokenProps }) => (
-          <pre
-            className="margin-bottom--none"
-            spellCheck={false}
-            ref={inputRef}
+      <Tabs>
+        <TabItem value="输入信息" default>
+          <Highlight
+            {...defaultProps}
+            code={input}
+            language="plaintext"
+            theme={theme}
           >
-            <code>
-              {tokens.map((line, i) => (
-                <React.Fragment key={i}>
-                  {line
-                    .filter((token) => !token.empty)
-                    .map((token, key) => (
-                      <span {...getTokenProps({ token, key })} />
-                    ))}
-                  {"\n"}
-                </React.Fragment>
-              ))}
-            </code>
-          </pre>
-        )}
-      </Highlight>
+            {({ tokens, getTokenProps }) => (
+              <pre
+                className="margin-bottom--none"
+                spellCheck={false}
+                ref={inputRef}
+              >
+                <code>
+                  {tokens.map((line, i) => (
+                    <React.Fragment key={i}>
+                      {line
+                        .filter((token) => !token.empty)
+                        .map((token, key) => (
+                          <span {...getTokenProps({ token, key })} />
+                        ))}
+                      {"\n"}
+                    </React.Fragment>
+                  ))}
+                </code>
+              </pre>
+            )}
+          </Highlight>
+        </TabItem>
+      </Tabs>
     )
   }
 
   function getCodeEditor() {
-    return (
-      <Highlight
-        {...defaultProps}
-        code={code}
-        language={language}
-        theme={theme}
-      >
-        {({ tokens, getTokenProps }) => (
-          <pre className={styles.codeEditor} spellCheck={false} ref={editorRef}>
-            <code>
-              {tokens.map((line, i) => (
-                <React.Fragment key={i}>
-                  {line
-                    .filter((token) => !token.empty)
-                    .map((token, key) => (
-                      <span {...getTokenProps({ token, key })} />
-                    ))}
-                  {"\n"}
-                </React.Fragment>
-              ))}
-            </code>
-          </pre>
-        )}
-      </Highlight>
-    )
-  }
-
-  function getTabs() {
     let label = "Python"
     if (language === "c") label = "C 语言"
-    if (showInput) {
-      return (
-        <Tabs>
-          <TabItem value={label} default>
-            {getCodeEditor()}
-          </TabItem>
-          <TabItem value="输入">{getInput()}</TabItem>
-        </Tabs>
-      )
-    } else {
-      return (
-        <Tabs>
-          <TabItem value={label} default>
-            {getCodeEditor()}
-          </TabItem>
-        </Tabs>
-      )
-    }
+    return (
+      <Tabs>
+        <TabItem value={label} default>
+          <Highlight
+            {...defaultProps}
+            code={code}
+            language={language}
+            theme={theme}
+          >
+            {({ tokens, getTokenProps }) => (
+              <pre
+                className={styles.codeEditor}
+                spellCheck={false}
+                ref={editorRef}
+              >
+                <code>
+                  {tokens.map((line, i) => (
+                    <React.Fragment key={i}>
+                      {line
+                        .filter((token) => !token.empty)
+                        .map((token, key) => (
+                          <span {...getTokenProps({ token, key })} />
+                        ))}
+                      {"\n"}
+                    </React.Fragment>
+                  ))}
+                </code>
+              </pre>
+            )}
+          </Highlight>
+        </TabItem>
+      </Tabs>
+    )
   }
 
   function Actions() {
@@ -204,20 +196,18 @@ function Editor({ children, showInput = false, language }) {
   }
 
   function TipForNullInput() {
-    if (showInputNullTip) {
-      return (
-        <Admonition type="caution" title="提示">
-          输入不能为空
-        </Admonition>
-      )
-    } else {
-      return null
-    }
+    if (!showInputNullTip) return null
+    return (
+      <Admonition type="caution" title="提示">
+        输入不能为空
+      </Admonition>
+    )
   }
 
   return (
     <>
-      {getTabs()}
+      {getCodeEditor()}
+      {getInput()}
       <Actions />
       <Output />
       <TipForNullInput />
