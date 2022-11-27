@@ -1,8 +1,10 @@
-import React, { useState, useRef, useCallback } from "react"
-import Highlight, { defaultProps } from "prism-react-renderer"
-import { usePrismTheme } from "@docusaurus/theme-common"
+import React, { useState, useCallback } from "react"
 import { useLocation } from "@docusaurus/router"
-import { useEditable } from "use-editable"
+import { useColorMode } from "@docusaurus/theme-common"
+import Codemirror from "@uiw/react-codemirror"
+import { cpp } from "@codemirror/lang-cpp"
+import { python } from "@codemirror/lang-python"
+import { githubLight, githubDark } from "@uiw/codemirror-theme-github"
 import Tabs from "@theme/Tabs"
 import TabItem from "@theme/TabItem"
 import Admonition from "@theme/Admonition"
@@ -10,13 +12,21 @@ import styles from "./styles.module.css"
 import { createSubmission } from "./api"
 
 function Editor({ children, showInput = false, language }) {
-  const theme = usePrismTheme()
   const location = useLocation()
   language = language || location.pathname.split("/")[1]
-  if (language === "clang") language = "c"
 
-  const editorRef = useRef(null)
-  const inputRef = useRef(null)
+  const highlight = {
+    c: cpp(),
+    clang: cpp(),
+    python: python(),
+  }[language]
+
+  const { colorMode } = useColorMode()
+
+  const theme = {
+    light: githubLight,
+    dark: githubDark,
+  }[colorMode]
 
   const [code, setCode] = useState(children)
   const [input, setInput] = useState("")
@@ -25,23 +35,14 @@ function Editor({ children, showInput = false, language }) {
   const [showInputNullTip, setShowInputNullTip] = useState(false)
   const [disabled, setDisabled] = useState(false)
 
-  const onCodeChange = useCallback((code) => {
-    setCode(code.slice(0, -1))
-  }, [])
+  const onCodeChange = useCallback(setCode, [])
 
   const onInputChange = useCallback((input) => {
-    setInput(input.slice(0, -1))
+    setInput(input)
     if (input) {
       setShowInputNullTip(false)
     }
   }, [])
-
-  useEditable(editorRef, onCodeChange, {
-    disabled: false,
-    indentation: 4,
-  })
-
-  useEditable(inputRef, onInputChange)
 
   async function run() {
     if (showInput && input === "") {
@@ -51,9 +52,8 @@ function Editor({ children, showInput = false, language }) {
     }
     setDisabled(true)
 
-    let languageID = 50
+    let languageID = 50 // C
     if (language === "python") languageID = 71
-    if (language === "cpp") languageID = 54
     const result = await createSubmission(code, input, languageID)
     setOutput(result.output)
     setStatusID(result.status.id)
@@ -73,71 +73,31 @@ function Editor({ children, showInput = false, language }) {
     return (
       <Tabs>
         <TabItem value="输入信息" default>
-          <Highlight
-            {...defaultProps}
-            code={input}
-            language="plaintext"
+          <Codemirror
+            className={styles.codeMirror}
+            value={input}
+            onChange={onInputChange}
             theme={theme}
-          >
-            {({ tokens, getTokenProps }) => (
-              <pre
-                className="margin-bottom--none"
-                spellCheck={false}
-                ref={inputRef}
-              >
-                <code>
-                  {tokens.map((line, i) => (
-                    <React.Fragment key={i}>
-                      {line
-                        .filter((token) => !token.empty)
-                        .map((token, key) => (
-                          <span {...getTokenProps({ token, key })} />
-                        ))}
-                      {"\n"}
-                    </React.Fragment>
-                  ))}
-                </code>
-              </pre>
-            )}
-          </Highlight>
+          ></Codemirror>
         </TabItem>
       </Tabs>
     )
   }
 
   function getCodeEditor() {
-    let label = "Python"
-    if (language === "c") label = "C 语言"
+    let label = "C 语言"
+    if (language === "python") label = "Python 3"
     return (
       <Tabs>
         <TabItem value={label} default>
-          <Highlight
-            {...defaultProps}
-            code={code}
-            language={language}
+          <Codemirror
+            className={styles.codeMirror}
+            value={code}
+            onChange={onCodeChange}
+            extensions={[highlight]}
             theme={theme}
-          >
-            {({ tokens, getTokenProps }) => (
-              <pre
-                className={styles.codeEditor}
-                spellCheck={false}
-                ref={editorRef}
-              >
-                <code>
-                  {tokens.map((line, i) => (
-                    <React.Fragment key={i}>
-                      {line
-                        .filter((token) => !token.empty)
-                        .map((token, key) => (
-                          <span {...getTokenProps({ token, key })} />
-                        ))}
-                      {"\n"}
-                    </React.Fragment>
-                  ))}
-                </code>
-              </pre>
-            )}
-          </Highlight>
+            basicSetup={{ tabSize: 4 }}
+          ></Codemirror>
         </TabItem>
       </Tabs>
     )

@@ -1,5 +1,6 @@
-.codeEditor {
-  box-shadow: var(--ifm-global-shadow-lw);
+.codeMirror * {
+  font-size: var(--ifm-font-size-base);
+  font-family: var(--ifm-font-family-monospace);
 }
 
 .outputBox {
