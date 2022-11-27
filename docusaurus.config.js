@@ -56,7 +56,7 @@ const config = {
     [
       "@docusaurus/plugin-pwa",
       {
-        debug: true,
+        debug: false,
         offlineModeActivationStrategies: [
           "appInstalled",
           "standalone",
@@ -106,13 +106,13 @@ const config = {
         items: [
           {
             type: "doc",
-            docId: "basic/intro",
+            docId: "basic/intro/index",
             label: "编程基础",
           },
           {
             type: "doc",
             docId: "games/跑操喊口号/index",
-            label: '游戏闯关'
+            label: "游戏闯关",
           },
           {
             label: "编程语言",
@@ -133,6 +133,11 @@ const config = {
             type: "doc",
             docId: "cs/intro/index",
             label: "计算机科学",
+          },
+          {
+            type: "doc",
+            docId: "tools/index",
+            label: "工具集合",
           },
           // {
           //   type: "doc",
