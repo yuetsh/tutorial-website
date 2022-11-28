@@ -1,12 +1,10 @@
 import React, { useState, useCallback } from "react"
 import { useLocation } from "@docusaurus/router"
 import { useColorMode } from "@docusaurus/theme-common"
-import Codemirror from "@uiw/react-codemirror"
+import CodeMirror from "@uiw/react-codemirror"
 import { cpp } from "@codemirror/lang-cpp"
 import { python } from "@codemirror/lang-python"
 import { githubLight, githubDark } from "@uiw/codemirror-theme-github"
-import Tabs from "@theme/Tabs"
-import TabItem from "@theme/TabItem"
 import Admonition from "@theme/Admonition"
 import styles from "./styles.module.css"
 import { createSubmission } from "./api"
@@ -71,35 +69,27 @@ function Editor({ children, showInput = false, language }) {
   function getInput() {
     if (!showInput) return null
     return (
-      <Tabs>
-        <TabItem value="输入信息" default>
-          <Codemirror
-            className={styles.codeMirror}
-            value={input}
-            onChange={onInputChange}
-            theme={theme}
-          ></Codemirror>
-        </TabItem>
-      </Tabs>
+      <CodeMirror
+        className={styles.codeMirror}
+        value={input}
+        onChange={onInputChange}
+        theme={theme}
+        basicSetup={{ lineNumbers: false, foldGutter: false }}
+        placeholder="输入信息"
+      ></CodeMirror>
     )
   }
 
   function getCodeEditor() {
-    let label = "C 语言"
-    if (language === "python") label = "Python 3"
     return (
-      <Tabs>
-        <TabItem value={label} default>
-          <Codemirror
-            className={styles.codeMirror}
-            value={code}
-            onChange={onCodeChange}
-            extensions={[highlight]}
-            theme={theme}
-            basicSetup={{ tabSize: 4 }}
-          ></Codemirror>
-        </TabItem>
-      </Tabs>
+      <CodeMirror
+        className={styles.codeMirror}
+        value={code}
+        onChange={onCodeChange}
+        extensions={[highlight]}
+        theme={theme}
+        basicSetup={{ tabSize: 4 }}
+      ></CodeMirror>
     )
   }
 
