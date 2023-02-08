@@ -16,9 +16,9 @@
   "dependencies": {
     "@codemirror/lang-cpp": "^6.0.2",
     "@codemirror/lang-python": "^6.1.1",
-    "@docusaurus/core": "^2.3.0",
-    "@docusaurus/plugin-pwa": "^2.3.0",
-    "@docusaurus/preset-classic": "^2.3.0",
+    "@docusaurus/core": "^2.3.1",
+    "@docusaurus/plugin-pwa": "^2.3.1",
+    "@docusaurus/preset-classic": "^2.3.1",
     "@mdx-js/react": "^1.6.22",
     "@uiw/codemirror-theme-github": "^4.19.7",
     "@uiw/react-codemirror": "^4.19.7",
@@ -28,8 +28,8 @@
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "^2.3.0",
-    "prettier": "^2.8.3"
+    "@docusaurus/module-type-aliases": "^2.3.1",
+    "prettier": "^2.8.4"
   },
   "browserslist": {
     "production": [
