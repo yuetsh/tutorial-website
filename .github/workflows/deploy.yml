@@ -13,18 +13,11 @@ jobs:
 
       - uses: actions/setup-node@v3
         with:
-          node-version: 'current'
-          cache: 'npm'
+          node-version: "current"
+          cache: "npm"
       - run: npm install
       - run: npm run build
 
-      - uses: appleboy/ssh-action@v0.1.4
-        with:
-          username: root
-          host: ${{ secrets.HOST }}
-          key: ${{ secrets.KEY }}
-          script: docker compose -f /root/Tutorial/docker-compose.yml down
-      
       - uses: easingthemes/ssh-deploy@v2.2.11
         env:
           SSH_PRIVATE_KEY: ${{ secrets.KEY }}
@@ -33,10 +26,3 @@ jobs:
           SOURCE: build
           REMOTE_USER: root
           TARGET: /root/Tutorial/
-
-      - uses: appleboy/ssh-action@v0.1.4
-        with:
-          username: root
-          host: ${{ secrets.HOST }}
-          key: ${{ secrets.KEY }}
-          script: docker compose -f /root/Tutorial/docker-compose.yml up -d
