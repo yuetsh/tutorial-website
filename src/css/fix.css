@@ -1,9 +1,0 @@
-.button--primary {
-  background-color: var(--ifm-color-primary);
-  border-color: var(--ifm-color-primary);
-}
-
-.button--secondary {
-  background-color: var(--ifm-color-secondary);
-  border-color: var(--ifm-color-secondary);
-}
