@@ -1,21 +1,24 @@
 const BASE_URL = "https://judge0api.hyyz.izhai.net"
 
-function encode(str) {
+function encode(str: string) {
   return btoa(unescape(encodeURIComponent(str || "")))
 }
 
-function decode(bytes) {
-  let escaped = escape(atob(bytes || ""))
-  try {
-    return decodeURIComponent(escaped)
-  } catch (e) {
-    return unescape(escaped)
-  }
+export function decode(bytes?: string) {
+  const latin = atob(bytes ?? "")
+  return new TextDecoder("utf-8").decode(
+    Uint8Array.from({ length: latin.length }, (_, index) =>
+      latin.charCodeAt(index),
+    ),
+  )
 }
 
-export async function createSubmission(code, stdin, id) {
+export async function createSubmission(
+  code: string,
+  stdin: string,
+  id: number,
+) {
   const encodedCode = encode(code)
-  id = parseInt(id)
   let compilerOptions = ""
   if (id === 50) compilerOptions = "-lm" // 解决 GCC 的链接问题
   const payload = {
@@ -34,7 +37,7 @@ export async function createSubmission(code, stdin, id) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(payload),
-      }
+      },
     )
     const data = await response.json()
     return {
