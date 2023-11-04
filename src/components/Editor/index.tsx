@@ -1,13 +1,23 @@
 import React, { useState, useCallback } from "react"
 import { useLocation } from "@docusaurus/router"
 import { useColorMode } from "@docusaurus/theme-common"
-import CodeMirror from "@uiw/react-codemirror"
+import CodeMirror, { EditorView } from "@uiw/react-codemirror"
 import { cpp } from "@codemirror/lang-cpp"
 import { python } from "@codemirror/lang-python"
 import { githubLight, githubDark } from "@uiw/codemirror-theme-github"
 import Admonition from "@theme/Admonition"
 import styles from "./styles.module.css"
 import { createSubmission } from "./api"
+
+const styleTheme = EditorView.baseTheme({
+  "& .cm-scroller": {
+    "font-family": "Consolas",
+  },
+  "&.cm-editor.cm-focused": {
+    outline: "none",
+  },
+})
+
 
 function Editor({ children, showInput = false, language }) {
   const location = useLocation()
@@ -69,14 +79,17 @@ function Editor({ children, showInput = false, language }) {
   function getInput() {
     if (!showInput) return null
     return (
-      <CodeMirror
+      <div className={styles.input}>
+        <CodeMirror
         className={styles.codeMirror}
         value={input}
         onChange={onInputChange}
         theme={theme}
         basicSetup={{ lineNumbers: false, foldGutter: false }}
         placeholder="输入信息"
+        extensions={[styleTheme]}
       ></CodeMirror>
+      </div>
     )
   }
 
@@ -86,7 +99,7 @@ function Editor({ children, showInput = false, language }) {
         className={styles.codeMirror}
         value={code}
         onChange={onCodeChange}
-        extensions={[highlight]}
+        extensions={[highlight, styleTheme]}
         theme={theme}
         basicSetup={{ tabSize: 4 }}
       ></CodeMirror>

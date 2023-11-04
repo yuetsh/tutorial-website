@@ -3,6 +3,10 @@
   font-family: var(--ifm-font-family-monospace);
 }
 
+.input {
+  margin-top: 12px;
+}
+
 .outputBox {
   box-shadow: none;
   padding: 0;
